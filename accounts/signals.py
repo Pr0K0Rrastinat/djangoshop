@@ -4,6 +4,7 @@ from django.dispatch import receiver
 from .models import Token
 from django.utils import timezone
 
+#Очищаем токены
 @receiver(post_migrate)
 def clear_expired_tokens(sender, **kwargs):
     Token.objects.filter(expiration__lt=timezone.now()).delete()
