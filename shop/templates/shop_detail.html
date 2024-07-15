@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ shop.name }}</h1>
+  <ul>
+    {% for order in orders %}
+      <li>
+        Order #{{ order.pk }} -{{order.status}}
+        <a href="{% url 'order_detail' order.pk %}">Поменять статус заказа</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
